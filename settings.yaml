@@ -1,0 +1,11 @@
+app:
+  name: SBAAS Productivity
+  version: 0.1.0
+  organization: Sample Org
+
+database:
+  echo: false
+  path: data/sbaas.db
+
+ui:
+  theme: light
