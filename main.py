@@ -20,10 +20,7 @@ def main() -> None:
         with get_session() as session:
             site_blocker.apply_blocklist(session)
     except SiteBlockerError as exc:
-        warning_message = (
-            "Site blocking is disabled because administrative permissions are unavailable. "
-            f"Reason: {exc}"
-        )
+        warning_message = "We couldn't set up site blocking because Windows needs administrator access. Please restart SBAAS Productivity with “Run as administrator” to enable blocking."
 
     app = QApplication(sys.argv)
     window = MainWindow(config, site_blocker=site_blocker, warning_message=warning_message)

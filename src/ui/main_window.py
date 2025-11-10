@@ -70,19 +70,6 @@ class MainWindow(QMainWindow):
         root_layout.setContentsMargins(24, 24, 24, 24)
         root_layout.setSpacing(16)
 
-        header_label = QLabel("Welcome to SBAAS Productivity", self)
-        header_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        header_label.setObjectName("welcomeLabel")
-        root_layout.addWidget(header_label)
-
-        if self.warning_message:
-            banner_label = QLabel(self.warning_message, self)
-            banner_label.setWordWrap(True)
-            banner_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            banner_label.setObjectName("warningBannerLabel")
-            banner_label.setStyleSheet("color: #b3261e; font-weight: bold;")
-            root_layout.addWidget(banner_label)
-
         tab_widget = QTabWidget(self)
         tab_widget.setObjectName("mainTabs")
         tab_widget.addTab(self._build_site_blocking_tab(), "Site Blocking")
