@@ -7,7 +7,7 @@ SBAAS Productivity is a local desktop application built with Python 3.10, PySide
 - **Entry point (`main.py`)** initializes configuration, database metadata, and launches the PySide6 event loop with the main window defined in `src/ui/main_window.py`.
 - **Configuration (`src/config/config_loader.py`)** loads `.env` values with `python-dotenv` and YAML settings with `pyyaml`. It exposes helpers for app metadata and database connectivity details.
 - **Database (`src/config/db.py`)** defines the SQLAlchemy Declarative Base, engine, and session factory. `init_db()` auto-creates tables when the app starts.
-- **Features (`src/features/`)** contain focused business logic modules. `example_feature.py` demonstrates summary calculations with strict type hints.
+- **Features (`src/features/`)** contain focused business logic modules. Additional modules should encapsulate discrete productivity workflows.
 - **UI Layer (`src/ui/`)** contains widgets and Qt Designer forms. `main_window.py` wires configuration data into the top-level window.
 - **Utilities (`src/utils/helpers.py`)** host reusable math helpers with deterministic outputs suitable for unit testing.
 

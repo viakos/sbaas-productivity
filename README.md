@@ -14,7 +14,7 @@ Local productivity desktop application built with Python 3.10, PySide6, and SQLi
 
 ## Project Layout
 - `src/config/` – configuration loader + database session helpers.
-- `src/features/` – domain-specific logic (see `example_feature.py`).
+- `src/features/` – domain-specific logic modules.
 - `src/ui/` – PySide6 widgets and Designer forms.
 - `src/utils/` – shared helper utilities.
 - `docs/` – technical and functional specifications.
