@@ -7,8 +7,8 @@ SBAAS Productivity is a local desktop application built with Python 3.10, PySide
 - **Entry point (`main.py`)** initializes configuration, database metadata, and launches the PySide6 event loop with the main window defined in `src/ui/main_window.py`.
 - **Configuration (`src/config/config_loader.py`)** loads `.env` values with `python-dotenv` and YAML settings with `pyyaml`. It exposes helpers for app metadata and database connectivity details.
 - **Database (`src/config/db.py`)** defines the SQLAlchemy Declarative Base, engine, and session factory. `init_db()` auto-creates tables when the app starts.
-- **Features (`src/features/`)** contain focused business logic modules. `site_blocker.py` introduces the first concrete feature, coordinating SQLAlchemy models with system-level hosts file updates and raising explicit errors when the hosts file cannot be written.
-- **UI Layer (`src/ui/main_window.py`)** now exposes a site-blocking control surface with Qt widgets (line edit, action buttons, list view) that call into the feature layer via shared DB sessions.
+- **Features (`src/features/`)** contain focused business logic modules. `site_blocker.py` manages hosts modifications while `focus_timer.py` defines the `FocusSession` ORM model plus persistence helpers for completed deep-focus sessions.
+- **UI Layer (`src/ui/main_window.py`)** uses a tabbed interface surfaced through Qt widgets: the Site Blocking tab controls the Windows hosts file, and the Focus Timer tab orchestrates a countdown interface tied to the persistence service.
 - **UI Layer (`src/ui/`)** contains widgets and Qt Designer forms. `main_window.py` wires configuration data into the top-level window.
 - **Utilities (`src/utils/helpers.py`)** host reusable math helpers with deterministic outputs suitable for unit testing.
 

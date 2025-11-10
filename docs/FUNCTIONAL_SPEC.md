@@ -8,6 +8,7 @@
 ## Current Scope (MVP)
 - Display a welcoming dashboard window that confirms the application version and active theme.
 - Provide a site blocking capability that persists domains, keeps the Windows hosts file synchronized, and offers in-app controls to add/remove blocked domains.
+- Offer a focus timer tab where users set a minute-based goal, run a countdown, and automatically log successfully completed (non-aborted) sessions.
 - When administrative privileges are missing, the GUI informs the user that site blocking is temporarily disabled.
 - Load configuration values from disk and initialize the backing SQLite database automatically.
 
@@ -21,3 +22,4 @@
 2. Persist productivity metrics in SQLite and visualize trends within the GUI.
 3. Add task import/export integrations with the broader SBAAS ecosystem.
 4. Offer user preferences (e.g., theme toggle, notifications) saved per profile.
+5. Extend the focus timer with session history charts, streak tracking, and configurable alerts.

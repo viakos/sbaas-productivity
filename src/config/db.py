@@ -31,6 +31,7 @@ ENGINE, SessionLocal = _create_engine(_CONFIG)
 def init_db() -> None:
     """Create database tables if they do not exist."""
     # Import models so SQLAlchemy is aware before running metadata creation.
+    from src.features import focus_timer as _focus_timer  # noqa: F401
     from src.features import site_blocker as _site_blocker  # noqa: F401
 
     Base.metadata.create_all(bind=ENGINE)

@@ -30,3 +30,8 @@ Local productivity desktop application built with Python 3.10, PySide6, and SQLi
 - Active entries are written to the Windows hosts file using lines tagged with `# SBAAS_BLOCK`.
 - Launch the application with administrative privileges so it can write to `C:\Windows\System32\drivers\etc\hosts`. If elevated permissions are missing, the GUI surfaces a warning and site blocking remains disabled until access is granted.
 - The main window exposes a Site Blocking panel where you can enter a domain, click **Add**, and manage the list via multi-select removal.
+
+## Focus Timer Feature
+- Switch to the **Focus Timer** tab to set a deep-focus goal in minutes using the large input field.
+- Start begins a live countdown (displayed beneath the controls); Stop pauses early without recording progress.
+- When the timer naturally reaches zero, the app congratulates the user and persists the completed session (target minutes + total seconds) to the SQLite database via `FocusTimerService`.
