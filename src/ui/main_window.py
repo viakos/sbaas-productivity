@@ -10,7 +10,6 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QPushButton,
     QStatusBar,
-    QTabWidget,
     QToolBar,
     QVBoxLayout,
     QWidget,
@@ -47,22 +46,14 @@ class MainWindow(QMainWindow):
         self.resize(900, 650)
 
         central_widget = QWidget(self)
-        root_layout = QVBoxLayout(central_widget)
-        root_layout.setContentsMargins(32, 32, 32, 32)
-        root_layout.setSpacing(16)
-
-        tab_widget = QTabWidget(self)
-        tab_widget.setObjectName("mainTabs")
-
-        # Overview tab
-        overview_tab = QWidget(self)
-        overview_layout = QVBoxLayout(overview_tab)
-        overview_layout.setSpacing(12)
+        layout = QVBoxLayout(central_widget)
+        layout.setContentsMargins(32, 32, 32, 32)
+        layout.setSpacing(16)
 
         central_label = QLabel("Welcome to SBAAS Productivity", self)
         central_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         central_label.setObjectName("welcomeLabel")
-        overview_layout.addWidget(central_label)
+        layout.addWidget(central_label)
 
         if self.warning_message:
             warning_label = QLabel(self.warning_message, self)
@@ -70,22 +61,7 @@ class MainWindow(QMainWindow):
             warning_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
             warning_label.setObjectName("warningLabel")
             warning_label.setStyleSheet("color: #b3261e; font-weight: bold;")
-            overview_layout.addWidget(warning_label)
-
-        tab_widget.addTab(overview_tab, "Overview")
-
-        # Site blocking tab
-        site_tab = QWidget(self)
-        site_layout = QVBoxLayout(site_tab)
-        site_layout.setSpacing(12)
-
-        if self.warning_message:
-            site_warning = QLabel(self.warning_message, self)
-            site_warning.setWordWrap(True)
-            site_warning.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            site_warning.setObjectName("siteWarningLabel")
-            site_warning.setStyleSheet("color: #b3261e; font-weight: bold;")
-            site_layout.addWidget(site_warning)
+            layout.addWidget(warning_label)
 
         controls_layout = QHBoxLayout()
         controls_layout.setSpacing(8)
@@ -102,21 +78,18 @@ class MainWindow(QMainWindow):
         remove_button.clicked.connect(self.handle_remove_selected)
         controls_layout.addWidget(remove_button)
 
-        site_layout.addLayout(controls_layout)
+        layout.addLayout(controls_layout)
 
         self.block_list_widget = QListWidget(self)
         self.block_list_widget.setSelectionMode(QListWidget.SelectionMode.ExtendedSelection)
         self.block_list_widget.setObjectName("blockedSitesList")
-        site_layout.addWidget(self.block_list_widget, stretch=1)
+        layout.addWidget(self.block_list_widget, stretch=1)
 
         self.status_label = QLabel("", self)
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.status_label.setObjectName("statusLabel")
-        site_layout.addWidget(self.status_label)
+        layout.addWidget(self.status_label)
 
-        tab_widget.addTab(site_tab, "Site Blocking")
-
-        root_layout.addWidget(tab_widget)
         self.setCentralWidget(central_widget)
 
         toolbar = QToolBar("Main Toolbar", self)
