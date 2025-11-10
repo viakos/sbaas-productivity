@@ -7,7 +7,8 @@ SBAAS Productivity is a local desktop application built with Python 3.10, PySide
 - **Entry point (`main.py`)** initializes configuration, database metadata, and launches the PySide6 event loop with the main window defined in `src/ui/main_window.py`.
 - **Configuration (`src/config/config_loader.py`)** loads `.env` values with `python-dotenv` and YAML settings with `pyyaml`. It exposes helpers for app metadata and database connectivity details.
 - **Database (`src/config/db.py`)** defines the SQLAlchemy Declarative Base, engine, and session factory. `init_db()` auto-creates tables when the app starts.
-- **Features (`src/features/`)** contain focused business logic modules. Additional modules should encapsulate discrete productivity workflows.
+- **Features (`src/features/`)** contain focused business logic modules. `site_blocker.py` introduces the first concrete feature, coordinating SQLAlchemy models with system-level hosts file updates and raising explicit errors when the hosts file cannot be written.
+- **UI Layer (`src/ui/main_window.py`)** now exposes a site-blocking control surface with Qt widgets (line edit, action buttons, list view) that call into the feature layer via shared DB sessions.
 - **UI Layer (`src/ui/`)** contains widgets and Qt Designer forms. `main_window.py` wires configuration data into the top-level window.
 - **Utilities (`src/utils/helpers.py`)** host reusable math helpers with deterministic outputs suitable for unit testing.
 
@@ -19,5 +20,5 @@ Pytest is used for validating configuration loading, helper utilities, and featu
 
 ## Future Work
 - Introduce Alembic migrations once persistent models are added.
-- Expand `src/features/` with real productivity insights and connect them to UI widgets.
+- Expand `src/features/` with additional productivity insights and expose the site-blocking workflow via the GUI (activation toggles, schedule, etc.).
 - Add integration tests that cover the Config + DB stack together.

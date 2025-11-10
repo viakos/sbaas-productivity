@@ -7,7 +7,8 @@
 
 ## Current Scope (MVP)
 - Display a welcoming dashboard window that confirms the application version and active theme.
-- Provide reusable helper logic (`summarize_productivity`) for eventual dashboard widgets.
+- Provide a site blocking capability that persists domains, keeps the Windows hosts file synchronized, and offers in-app controls to add/remove blocked domains.
+- When administrative privileges are missing, the GUI informs the user that site blocking is temporarily disabled.
 - Load configuration values from disk and initialize the backing SQLite database automatically.
 
 ## Configuration
@@ -16,6 +17,7 @@
 - The Config class exposes typed accessors ensuring downstream code remains decoupled from parsing logic.
 
 ## Future Enhancements
-1. Persist productivity metrics in SQLite and visualize trends within the GUI.
-2. Add task import/export integrations with the broader SBAAS ecosystem.
-3. Offer user preferences (e.g., theme toggle, notifications) saved per profile.
+1. Enhance the site blocking UI with scheduling and bulk import/export controls.
+2. Persist productivity metrics in SQLite and visualize trends within the GUI.
+3. Add task import/export integrations with the broader SBAAS ecosystem.
+4. Offer user preferences (e.g., theme toggle, notifications) saved per profile.
